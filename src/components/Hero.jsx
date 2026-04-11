@@ -15,12 +15,11 @@ const Hero = () => {
         }
     }, []);
 
-    // Live Clock and Greeting
+    // Live Clock
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentTime(new Date());
         }, 1000);
-        
         return () => clearInterval(timer);
     }, []);
 
@@ -60,6 +59,43 @@ const Hero = () => {
         localStorage.removeItem('profileImage');
     };
 
+    // Add blink animation to document
+    useEffect(() => {
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            @keyframes fadeInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-40px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            @keyframes fadeInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(40px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+        return () => document.head.removeChild(styleSheet);
+    }, []);
+
     const styles = {
         section: {
             display: 'flex',
@@ -69,9 +105,14 @@ const Hero = () => {
             flexWrap: 'wrap',
             minHeight: '100vh',
             padding: '100px 5%',
-            background: '#0a0a2a'
+            background: '#0a0a2a',
+            position: 'relative',
+            overflow: 'hidden'
         },
-        content: { flex: 1 },
+        content: { 
+            flex: 1,
+            animation: 'fadeInLeft 0.8s ease forwards'
+        },
         greetingMsg: { 
             fontSize: '1.2rem', 
             color: '#a855f7', 
@@ -80,7 +121,11 @@ const Hero = () => {
             alignItems: 'center',
             gap: '0.5rem'
         },
-        hello: { fontSize: '1.5rem', color: '#667eea', marginBottom: '0.5rem' },
+        hello: { 
+            fontSize: '1.5rem', 
+            color: '#667eea', 
+            marginBottom: '0.5rem' 
+        },
         timeContainer: { 
             fontSize: '0.9rem', 
             color: '#667eea', 
@@ -90,7 +135,11 @@ const Hero = () => {
             alignItems: 'center', 
             gap: '0.5rem'
         },
-        name: { fontSize: '3.5rem', margin: '0.5rem 0', lineHeight: 1.2 },
+        name: { 
+            fontSize: '3.5rem', 
+            margin: '0.5rem 0', 
+            lineHeight: 1.2 
+        },
         highlight: {
             background: 'linear-gradient(135deg, #667eea, #764ba2)',
             WebkitBackgroundClip: 'text',
@@ -107,10 +156,19 @@ const Hero = () => {
         },
         cursor: {
             animation: 'blink 1s infinite',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            color: '#667eea'
         },
-        description: { color: '#888', margin: '1.5rem 0', lineHeight: 1.6 },
-        buttons: { display: 'flex', gap: '1rem', flexWrap: 'wrap' },
+        description: { 
+            color: '#888', 
+            margin: '1.5rem 0', 
+            lineHeight: 1.6 
+        },
+        buttons: { 
+            display: 'flex', 
+            gap: '1rem', 
+            flexWrap: 'wrap' 
+        },
         btnPrimary: {
             padding: '0.8rem 2rem',
             background: 'linear-gradient(135deg, #667eea, #764ba2)',
@@ -119,7 +177,9 @@ const Hero = () => {
             borderRadius: '50px',
             fontWeight: 600,
             transition: 'all 0.3s ease',
-            display: 'inline-block'
+            display: 'inline-block',
+            position: 'relative',
+            overflow: 'hidden'
         },
         btnOutline: {
             padding: '0.8rem 2rem',
@@ -129,9 +189,14 @@ const Hero = () => {
             borderRadius: '50px',
             fontWeight: 600,
             transition: 'all 0.3s ease',
-            display: 'inline-block'
+            display: 'inline-block',
+            background: 'transparent'
         },
-        image: { flex: 1, textAlign: 'center' },
+        image: { 
+            flex: 1, 
+            textAlign: 'center',
+            animation: 'fadeInRight 0.8s ease forwards'
+        },
         profileImage: {
             width: '300px',
             height: '300px',
@@ -140,7 +205,8 @@ const Hero = () => {
             border: '5px solid #667eea',
             boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
             cursor: 'pointer',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            animation: 'float 3s ease infinite'
         },
         uploadButton: {
             marginTop: '1rem',
@@ -162,24 +228,39 @@ const Hero = () => {
             justifyContent: 'center',
             gap: '0.5rem',
             marginTop: '1rem'
+        },
+        floatingShape: {
+            position: 'absolute',
+            bottom: '20px',
+            left: '10%',
+            width: '100px',
+            height: '100px',
+            background: 'rgba(102, 126, 234, 0.1)',
+            borderRadius: '50%',
+            filter: 'blur(40px)',
+            animation: 'float 6s ease infinite',
+            zIndex: 0
+        },
+        floatingShape2: {
+            position: 'absolute',
+            top: '20%',
+            right: '5%',
+            width: '150px',
+            height: '150px',
+            background: 'rgba(236, 72, 153, 0.1)',
+            borderRadius: '50%',
+            filter: 'blur(50px)',
+            animation: 'float 8s ease infinite reverse',
+            zIndex: 0
         }
     };
 
-    // Add blink animation to the document
-    useEffect(() => {
-        const styleSheet = document.createElement("style");
-        styleSheet.textContent = `
-            @keyframes blink {
-                0%, 50% { opacity: 1; }
-                51%, 100% { opacity: 0; }
-            }
-        `;
-        document.head.appendChild(styleSheet);
-        return () => document.head.removeChild(styleSheet);
-    }, []);
-
     return (
         <section id="home" style={styles.section}>
+            {/* Floating background shapes */}
+            <div style={styles.floatingShape}></div>
+            <div style={styles.floatingShape2}></div>
+            
             <div style={styles.content}>
                 <div style={styles.greetingMsg}>
                     <i className="fas fa-sun"></i> {greeting}! 👋
@@ -198,8 +279,8 @@ const Hero = () => {
                     Currently expanding my knowledge in software development, web technologies, and problem-solving.
                 </p>
                 <div style={styles.buttons}>
-                    <a href="#contact" style={styles.btnPrimary}>Hire Me</a>
-                    <a href="#projects" style={styles.btnOutline}>View Work</a>
+                    <a href="#contact" style={styles.btnPrimary} className="hover-lift">Hire Me</a>
+                    <a href="#projects" style={styles.btnOutline} className="hover-lift">View Work</a>
                 </div>
             </div>
             <div style={styles.image}>
@@ -208,6 +289,7 @@ const Hero = () => {
                     alt="Profile" 
                     style={styles.profileImage}
                     onClick={() => document.getElementById('profileInput').click()}
+                    className="profile-image"
                 />
                 <input
                     id="profileInput"
@@ -220,12 +302,14 @@ const Hero = () => {
                     <button 
                         style={styles.uploadButton}
                         onClick={() => document.getElementById('profileInput').click()}
+                        className="scale-hover"
                     >
                         <i className="fas fa-camera"></i> Change
                     </button>
                     <button 
                         style={{...styles.uploadButton, background: 'rgba(236, 72, 153, 0.2)', borderColor: '#ec489a', color: '#ec489a'}}
                         onClick={resetImage}
+                        className="scale-hover"
                     >
                         <i className="fas fa-undo"></i> Reset
                     </button>
