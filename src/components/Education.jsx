@@ -4,7 +4,7 @@ const Education = () => {
     const education = [
         {
             degree: 'Bachelor of Science in Computer Science',
-            institution: 'Addis Ababa University',
+            institution: 'Injibara University',
             period: '2022 - Present',
             gpa: '3.7/4.0',
             courses: ['Data Structures', 'Algorithms', 'Database Systems', 'Web Development']
