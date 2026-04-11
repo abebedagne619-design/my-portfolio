@@ -105,7 +105,7 @@ const Hero = () => {
             flexWrap: 'wrap',
             minHeight: '100vh',
             padding: '100px 5%',
-            background: '#0a0a2a',
+            background: 'rgba(15, 119, 93, 0.87)',
             position: 'relative',
             overflow: 'hidden'
         },

@@ -23,7 +23,7 @@ const Experience = () => {
     ];
 
     const styles = {
-        section: { padding: '100px 5%', background: '#0a0a2a' },
+        section: { padding: '100px 5%', background: 'green' },
         title: { fontSize: '2.5rem', textAlign: 'center', marginBottom: '3rem', background: 'linear-gradient(135deg, #fff, #667eea)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' },
         container: { maxWidth: '800px', margin: '0 auto' },
         experienceCard: { background: '#1a1a3a', padding: '1.5rem', borderRadius: '15px', marginBottom: '1.5rem', transition: 'all 0.3s ease' },

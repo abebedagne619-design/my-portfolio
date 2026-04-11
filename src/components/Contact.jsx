@@ -43,7 +43,7 @@ const Contact = () => {
     const styles = {
         section: {
             padding: '100px 5%',
-            background: '#0a0a2a',
+            background: '#18e444',
             position: 'relative'
         },
         title: {

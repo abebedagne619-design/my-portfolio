@@ -94,7 +94,7 @@ const Projects = () => {
     const styles = {
         section: { 
             padding: '100px 5%', 
-            background: '#0a0a2a',
+            background: '#2ada12',
             position: 'relative'
         },
         title: { 

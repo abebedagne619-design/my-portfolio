@@ -25,7 +25,7 @@ const Testimonials = () => {
     const [current, setCurrent] = useState(0);
 
     const styles = {
-        section: { padding: '100px 5%', background: '#0a0a2a' },
+        section: { padding: '100px 5%', background: '#2098cf' },
         title: { fontSize: '2.5rem', textAlign: 'center', marginBottom: '3rem', background: 'linear-gradient(135deg, #fff, #667eea)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' },
         container: { maxWidth: '800px', margin: '0 auto', textAlign: 'center' },
         card: { background: '#1a1a3a', padding: '2rem', borderRadius: '20px' },

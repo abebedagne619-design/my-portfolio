@@ -8,7 +8,7 @@ const LanguageSkills = () => {
     ];
 
     const styles = {
-        section: { padding: '100px 5%', background: '#0a0a2a' },
+        section: { padding: '100px 5%', background: '#2fc921' },
         title: { fontSize: '2.5rem', textAlign: 'center', marginBottom: '3rem', background: 'linear-gradient(135deg, #fff, #667eea)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' },
         container: { maxWidth: '600px', margin: '0 auto' },
         languageItem: { marginBottom: '1.5rem' },

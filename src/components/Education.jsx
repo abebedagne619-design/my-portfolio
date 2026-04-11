@@ -18,7 +18,7 @@ const Education = () => {
     ];
 
     const styles = {
-        section: { padding: '100px 5%', background: '#0a0a2a' },
+        section: { padding: '100px 5%', background: '#012b08' },
         title: { fontSize: '2.5rem', textAlign: 'center', marginBottom: '3rem', background: 'linear-gradient(135deg, #fff, #667eea)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' },
         container: { maxWidth: '800px', margin: '0 auto' },
         educationCard: { background: '#1a1a3a', padding: '1.5rem', borderRadius: '15px', marginBottom: '1.5rem' },

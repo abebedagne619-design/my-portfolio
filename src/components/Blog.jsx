@@ -23,7 +23,7 @@ const Blog = () => {
     ];
 
     const styles = {
-        section: { padding: '100px 5%', background: '#0a0a2a' },
+        section: { padding: '100px 5%', background: '#0bdb7a' },
         title: { fontSize: '2.5rem', textAlign: 'center', marginBottom: '3rem', background: 'linear-gradient(135deg, #fff, #667eea)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' },
         grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' },
         card: { background: '#1a1a3a', padding: '1.5rem', borderRadius: '20px', transition: 'all 0.3s ease' },
