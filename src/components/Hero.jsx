@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Hero = () => {
-    const [imageUrl, setImageUrl] = useState("/images/abex2.jfif"); 
+    const [imageUrl, setImageUrl] = useState("/images/abex2.jfif");
+
+    useEffect(() => {
+        const savedImage = localStorage.getItem('profileImage');
+        if (savedImage) {
+            setImageUrl(savedImage);
+        }
+    }, []);
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
             const newImageUrl = URL.createObjectURL(file);
             setImageUrl(newImageUrl);
+            localStorage.setItem('profileImage', newImageUrl);
         }
+    };
+
+    const resetImage = () => {
+        setImageUrl("/images/abex2.jfif");
+        localStorage.removeItem('profileImage');
     };
 
     const styles = {
@@ -74,10 +87,17 @@ const Hero = () => {
             color: '#667eea',
             cursor: 'pointer',
             fontSize: '0.8rem',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            marginRight: '0.5rem'
         },
         fileInput: {
             display: 'none'
+        },
+        buttonGroup: {
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '0.5rem',
+            marginTop: '1rem'
         }
     };
 
@@ -110,12 +130,18 @@ const Hero = () => {
                     style={styles.fileInput}
                     onChange={handleImageUpload}
                 />
-                <div>
+                <div style={styles.buttonGroup}>
                     <button 
                         style={styles.uploadButton}
                         onClick={() => document.getElementById('profileInput').click()}
                     >
-                        <i className="fas fa-camera"></i> Change Profile Picture
+                        <i className="fas fa-camera"></i> Change
+                    </button>
+                    <button 
+                        style={{...styles.uploadButton, background: 'rgba(236, 72, 153, 0.2)', borderColor: '#ec489a', color: '#ec489a'}}
+                        onClick={resetImage}
+                    >
+                        <i className="fas fa-undo"></i> Reset
                     </button>
                 </div>
             </div>

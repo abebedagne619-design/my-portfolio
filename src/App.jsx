@@ -14,6 +14,7 @@ import LanguageSkills from './components/LanguageSkills';
 
 function App() {
     const [isDarkMode, setIsDarkMode] = useState(true);
+    const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,7 +33,11 @@ function App() {
                     });
                 }
             });
+            
+            // Show back to top button after scrolling 500px
+            setShowBackToTop(window.scrollY > 500);
         };
+        
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -40,6 +45,10 @@ function App() {
     const toggleTheme = () => {
         setIsDarkMode(!isDarkMode);
         document.body.classList.toggle('light-mode');
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
@@ -59,6 +68,11 @@ function App() {
             <div className="theme-toggle" onClick={toggleTheme}>
                 <i className={`fas ${isDarkMode ? 'fa-sun' : 'fa-moon'}`}></i>
             </div>
+            {showBackToTop && (
+                <button className="back-to-top" onClick={scrollToTop}>
+                    <i className="fas fa-arrow-up"></i>
+                </button>
+            )}
         </div>
     );
 }
