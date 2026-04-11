@@ -2,12 +2,48 @@ import React, { useState, useEffect } from 'react';
 
 const Hero = () => {
     const [imageUrl, setImageUrl] = useState("/images/abex2.jfif");
+    const [currentTime, setCurrentTime] = useState(new Date());
+    const [greeting, setGreeting] = useState('');
+    const [typedText, setTypedText] = useState('');
+    const fullText = "3rd Year Computer Science Student";
 
+    // Load saved image from localStorage
     useEffect(() => {
         const savedImage = localStorage.getItem('profileImage');
         if (savedImage) {
             setImageUrl(savedImage);
         }
+    }, []);
+
+    // Live Clock and Greeting
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTime(new Date());
+        }, 1000);
+        
+        return () => clearInterval(timer);
+    }, []);
+
+    // Update greeting based on time of day
+    useEffect(() => {
+        const hour = new Date().getHours();
+        if (hour < 12) setGreeting('Good Morning');
+        else if (hour < 18) setGreeting('Good Afternoon');
+        else setGreeting('Good Evening');
+    }, [currentTime]);
+
+    // Typing Animation
+    useEffect(() => {
+        let i = 0;
+        const typing = setInterval(() => {
+            if (i < fullText.length) {
+                setTypedText(fullText.substring(0, i + 1));
+                i++;
+            } else {
+                clearInterval(typing);
+            }
+        }, 100);
+        return () => clearInterval(typing);
     }, []);
 
     const handleImageUpload = (event) => {
@@ -36,15 +72,43 @@ const Hero = () => {
             background: '#0a0a2a'
         },
         content: { flex: 1 },
-        greeting: { fontSize: '1.5rem', color: '#667eea' },
-        name: { fontSize: '3.5rem', margin: '1rem 0', lineHeight: 1.2 },
+        greetingMsg: { 
+            fontSize: '1.2rem', 
+            color: '#a855f7', 
+            marginBottom: '0.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem'
+        },
+        hello: { fontSize: '1.5rem', color: '#667eea', marginBottom: '0.5rem' },
+        timeContainer: { 
+            fontSize: '0.9rem', 
+            color: '#667eea', 
+            marginTop: '0.5rem', 
+            marginBottom: '1rem',
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.5rem'
+        },
+        name: { fontSize: '3.5rem', margin: '0.5rem 0', lineHeight: 1.2 },
         highlight: {
             background: 'linear-gradient(135deg, #667eea, #764ba2)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             color: 'transparent'
         },
-        title: { fontSize: '1.3rem', color: '#aaa' },
+        title: { 
+            fontSize: '1.3rem', 
+            color: '#aaa',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.3rem',
+            flexWrap: 'wrap'
+        },
+        cursor: {
+            animation: 'blink 1s infinite',
+            fontWeight: 'bold'
+        },
         description: { color: '#888', margin: '1.5rem 0', lineHeight: 1.6 },
         buttons: { display: 'flex', gap: '1rem', flexWrap: 'wrap' },
         btnPrimary: {
@@ -101,12 +165,34 @@ const Hero = () => {
         }
     };
 
+    // Add blink animation to the document
+    useEffect(() => {
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+        return () => document.head.removeChild(styleSheet);
+    }, []);
+
     return (
         <section id="home" style={styles.section}>
             <div style={styles.content}>
-                <h3 style={styles.greeting}>Hello, I'm</h3>
+                <div style={styles.greetingMsg}>
+                    <i className="fas fa-sun"></i> {greeting}! 👋
+                </div>
+                <h3 style={styles.hello}>Hello, I'm</h3>
                 <h1 style={styles.name}>Abebe <span style={styles.highlight}>Dagne Mengist</span></h1>
-                <h3 style={styles.title}>3rd Year Computer Science Student</h3>
+                <h3 style={styles.title}>
+                    {typedText}
+                    <span style={styles.cursor}>|</span>
+                </h3>
+                <div style={styles.timeContainer}>
+                    <i className="fas fa-clock"></i> Local Time: {currentTime.toLocaleTimeString()}
+                </div>
                 <p style={styles.description}>
                     Passionate computer science student with a drive for creating innovative digital solutions. 
                     Currently expanding my knowledge in software development, web technologies, and problem-solving.
