@@ -42,7 +42,7 @@ const Contact = () => {
     const contactInfo = [
         { icon: 'fas fa-envelope', label: 'Email', value: 'abebedagne619@gmail.com', color: '#ea4335', link: 'mailto:abebedagne619@gmail.com' },
         { icon: 'fas fa-phone-alt', label: 'Phone', value: '+251 925 518 992', color: '#34a853', link: 'tel:+251925518992' },
-        { icon: 'fab fa-telegram', label: 'Telegram', value: '@abebedagne', color: '#26a5e4', link: 'https://t.me/abebedagne' },
+        { icon: 'fab fa-telegram', label: 'Telegram', value: '@Abex212729', color: '#26a5e4', link: 'https://t.me/abebedagne' },
         { icon: 'fab fa-github', label: 'GitHub', value: 'github.com/abebedagne', color: '#333', link: 'https://github.com/abebedagne' },
         { icon: 'fab fa-linkedin', label: 'LinkedIn', value: 'linkedin.com/in/abebedagne', color: '#0077b5', link: 'https://linkedin.com/in/abebedagne' },
         { icon: 'fab fa-twitter', label: 'Twitter', value: '@abebedagne', color: '#1da1f2', link: 'https://twitter.com/abebedagne' }
