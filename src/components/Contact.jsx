@@ -49,7 +49,7 @@ const Contact = () => {
     ];
 
     const socialLinks = [
-        { icon: 'fab fa-github', url: 'https://github.com/abebedagne', color: '#333' },
+        { icon: 'fab fa-github', url: 'https://github.com/abebedagne619-design', color: '#333' },
         { icon: 'fab fa-linkedin-in', url: 'https://linkedin.com/in/abebedagne', color: '#0077b5' },
         { icon: 'fab fa-twitter', url: 'https://twitter.com/abebedagne', color: '#1da1f2' },
         { icon: 'fab fa-instagram', url: 'https://instagram.com/abebedagne', color: '#e4405f' },
