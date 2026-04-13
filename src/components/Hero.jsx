@@ -44,7 +44,7 @@ const Hero = () => {
     };
 
     const resetImage = () => {
-        setImageUrl("/images/abex2.jfif");
+        setImageUrl("/images/abex.jfif");
         localStorage.removeItem('profileImage');
     };
 
