@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './components.css';
 
 const Hero = () => {
-    const [imageUrl, setImageUrl] = useState("/images/abex2.jfif");
+    const [imageUrl, setImageUrl] = useState("/images/abex.jfif");
     const [currentTime, setCurrentTime] = useState(new Date());
     const [greeting, setGreeting] = useState('');
     const [typedText, setTypedText] = useState('');
