@@ -3,7 +3,7 @@ import './components.css';
 
 const Education = () => {
     const education = [
-        { degree: 'Bachelor of Science in Computer Science', institution: 'Injibara University', period: '2022 - Present', gpa: '3.7/4.0', courses: ['Data Structures', 'Algorithms', 'Database Systems', 'Web Development'] },
+        { degree: 'Bachelor of Science in Computer Science', institution: 'Injibara University', period: '2022 - Present', gpa: '', courses: ['Data Structures', 'Algorithms', 'Database Systems', 'Web Development'] },
         { degree: 'Full Stack Web Development Certificate', institution: 'Online Course', period: '2024', description: 'Completed comprehensive training in MERN stack development' }
     ];
 

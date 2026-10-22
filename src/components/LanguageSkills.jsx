@@ -4,8 +4,7 @@ import './components.css';
 const LanguageSkills = () => {
     const languages = [
         { name: 'Amharic', level: 'Native', percent: 100 },
-        { name: 'English', level: 'Fluent', percent: 85 },
-        { name: 'Arabic', level: 'Intermediate', percent: 50 }
+        { name: 'English', level: 'Fluent', percent: 55 },
     ];
 
     return (

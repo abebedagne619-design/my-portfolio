@@ -36,7 +36,7 @@ const About = () => {
                     </div>
                     <div className="about-stat-card" style={{ animationDelay: '0.4s' }}>
                         <i className="fas fa-book about-stat-icon"></i>
-                        <h3 className="about-stat-number">3rd Year</h3>
+                        <h3 className="about-stat-number">4th Year</h3>
                         <p className="about-stat-label">Computer Science</p>
                     </div>
                     <div className="about-stat-card" style={{ animationDelay: '0.6s' }}>

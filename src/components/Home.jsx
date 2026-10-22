@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './components.css';
 
-const Hero = () => {
+const Home = () => {
     const [imageUrl, setImageUrl] = useState("/images/abex.jfif");
     const [currentTime, setCurrentTime] = useState(new Date());
     const [greeting, setGreeting] = useState('');
@@ -85,4 +85,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default Home;
